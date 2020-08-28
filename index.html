@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="./app.css">
+    <title>Image upload</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-epxand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="http://#">Fire Blogs | Create</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Your dogs</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Public dogs</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" id="firstSection">
+                <img id="image" class="img-fluid"
+                    src="https://hervnzig.github.io/personal-portfolio/assets/blog_pic2.png" alt="blog_img">
+                <h2 class="h2 display-4">Let's upload</h2>
+                <button class="btn btn-primary" onclick="signIn()">signIn with google</button>
+            </div>
+
+            <div class="col-md-6" id="cardSection"></div>
+        </div>
+    </div>
+
+    <div class="contaier">
+        <div class="row" id="posts-collection">
+            <hr>
+        </div>
+    </div>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBqaMrkxoMTV6sIUoN5E8q4WTYm6n8EDto",
+            authDomain: "upload-image-cd9d2.firebaseapp.com",
+            databaseURL: "https://upload-image-cd9d2.firebaseio.com",
+            projectId: "upload-image-cd9d2",
+            storageBucket: "upload-image-cd9d2.appspot.com",
+            messagingSenderId: "448280914846",
+            appId: "1:448280914846:web:d1518653940594017d448f"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
