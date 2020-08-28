@@ -1,21 +1,47 @@
 "use strict";
 
-var provider = new firebase.auth.GoogleAuthProvider();
+// ------------------ Variables ------------------
+var ImageName, imageUrl;
+var files = [];
+var reader = new FileReader(); // ------------------- Selection process ----------
 
-function signIn() {
-  firebase.auth().signInWithPopup(provider).then(function (result) {
-    // This gives you a Google Access Token.You can use it to access the Google API.
-    var token = result.credential.accessToken; // The signed-in user info.
+document.getElementById("select").onclick = function (e) {
+  var input = document.createElement("input");
+  input.type = "file";
+  input.click();
 
-    var user = result.user;
-    console.log(user); //...
-  })["catch"](function (error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message; // The email of the user's account used.
+  input.onchange = function (e) {
+    files = e.target.files;
 
-    var email = error.email; // The firebase.auth.AuthCredential type that was used.
+    reader.onload = function () {
+      document.getElementById("my_img").src = reader.result;
+    };
 
-    var credential = error.credential; //...
+    reader.readAsDataURL(files[0]);
+  };
+
+  input.click();
+}; // ----------------------- Upload picture to storage ----------
+
+
+document.getElementById("upload").onclick = function () {
+  ImageName = document.getElementById("namebox").value;
+  var uploadTask = firebase.storage().ref("Images" + ImageName + ".png").put(files[0]);
+  uploadTask.on("state_changed", function (snapshot) {
+    var progress = snapshot.bytesTransferred / snapshot.totalBytes * 100;
+    document.getElementById("UpProgress").innerHTML = "Upload" + progress + "%";
+  }, // ----------------------- Error handling ----------
+  function (error) {
+    alert("error in saving the image");
+  }, // ----------------------- submit image link to database ----------
+  function () {
+    uploadTask.snapshot.ref.getDownloadURl().then(function (url) {
+      imageUrl = url;
+      firebase.database().ref("Pictures/" + ImageName).set({
+        Name: ImageName,
+        Link: imageUrl
+      });
+      alert("image added successfully");
+    });
   });
-}
+};

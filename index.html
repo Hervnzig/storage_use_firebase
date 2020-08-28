@@ -47,10 +47,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6" id="firstSection">
-                <img id="image" class="img-fluid"
-                    src="https://hervnzig.github.io/personal-portfolio/assets/blog_pic2.png" alt="blog_img">
-                <h2 class="h2 display-4">Let's upload</h2>
-                <button class="btn btn-primary" onclick="signIn()">signIn with google</button>
+                <input type="text" id="namebox"><br><br>
+                <img id="my_img" class="img-fluid" alt="blog_img">
+                <label id="UpProgress"></label><br><br>
+                <button id="select">Select Image</button>
+                <button id="upload">Upload Image</button>
+                <button id="retrieve">Retrieve image</button>
             </div>
 
             <div class="col-md-6" id="cardSection"></div>
@@ -65,6 +67,9 @@
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -84,7 +89,6 @@
         firebase.initializeApp(firebaseConfig);
     </script>
 
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="./app.js"></script>
 </body>
 

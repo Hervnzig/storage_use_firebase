@@ -1,3 +1,9 @@
 body {
     margin-top: 5rem;
 }
+
+img {
+    border: 2px solid black;
+    height: 50%;
+    width: 50%;
+}
